@@ -73,6 +73,38 @@ class Dosen extends CI_Controller{
             redirect('/login');
         }
     }
+    public function upload(){
+        $_iddosen = $this->input->post('iddosen');
+        // akes model mahasiswa
+        $this->load->model('dosen_model','dosen');
+        $ds = $this->dosen_model->getByI($id);
+        $data['ds'] = $ds;
+
+        $config ['upload_path']='./uploads/photos';
+        $config ['allowed_types']='jpg|png';
+        $config ['max_size']=2894;
+        $config ['max_width']=2894;
+        $config ['max_height']=2894;
+        $config ['file_name']=$ds->id;
+
+        // aktifkan libraru upload
+        $this->load->library('upload',$config);
+        // jika tidak ada file yang di upload 
+        if (!$this->upload->do_upload('foto')) {
+            // maka tampilan pesan eror
+            $data['error'] = $this->upload->display_errors();
+        } else {
+            // jika ada file yang di upload
+            // maka tampilkan pesan data berhasil di upload
+            $data['upload_data'] = $this->upload->data();
+            $data['error'] = 'data sukses';
+        }
+        // kirim ke view
+        $this->load->view('layouts/header');
+        $this->load->view('dosen/detail', $data);
+        $this->load->view('layouts/footer');
+        
+    }
 
 }
 

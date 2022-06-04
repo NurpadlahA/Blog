@@ -33,6 +33,30 @@
             </tr>
         </tbody>
     </table>
+    <div class="col-md-5 mb-3" >
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                    <img src="<?=base_url()?>uploads/photos/<?=$ds->id?>.jpg" alt="ini foto" width="300" />
+                    <div class="mt-4">
+                        <h4><?=$ds->nama?></h4>
+                        <p>Foto Dosen</p> 
+                        <?php echo $error;?>
+                        <br/>
+                        <a href="https://www.instagram.com/n_padlah/" target="_blank">
+                            <button class="btn btn-outline-info">Instagram</button>
+                        </a>
+                        <?php echo form_open_multipart('mahasiswa/upload');?>
+                        <input type="file" name="foto" size="300"/>
+                        <input type="hidden" name="idmahasiswa" value="<?=$ds->id?>"/>
+                        <br/><br/>
+                        <input type="submit" value="upload Foto" class="btn btn-primary" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 </html>

@@ -43,9 +43,6 @@ if ($username) {
                 <td><?php echo $mk->sks?></td>
                 <td><?php echo $mk->kode ?></td>
                 <td>
-                    <a href= <?php echo base_url("index.php/matakuliah/detail/$mk->id")?>
-                    class="btn btn-primary btn-lg active" >Detail</a>
-                    &nbsp;
                     <a href= <?php echo base_url("index.php/matakuliah/edit/$mk->id") ?> 
                     class="btn btn-success btn-lg active" >Edit</a>
                     <a href= <?php echo base_url("index.php/matakuliah/delete/$mk->id") ?> 
