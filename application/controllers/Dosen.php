@@ -3,16 +3,16 @@ class Dosen extends CI_Controller{
     public function index(){
         $this->load->model('dosen_model');
         $dosen = $this->dosen_model->getAl();
-        $ata['dosen'] = $dosen;
+        $data['dosen'] = $dosen;
         $this->load->view('layouts/header');
-        $this->load->view('dosen/index', $ata);
+        $this->load->view('dosen/index', $data);
         $this->load->view('layouts/footer');
     }
     public function detail($id){
         // akses model dosen
         $this->load->model('dosen_model');
-        $ds = $this->dosen_model->getByI($id);
-        $data['ds'] = $ds;
+        $dnn = $this->dosen_model->getById($id);
+        $data['dnn'] = $dnn;
         $this->load->view('layouts/header');
         $this->load->view('dosen/detail', $data);
         $this->load->view('layouts/footer');
@@ -53,7 +53,7 @@ class Dosen extends CI_Controller{
     public function edit($id){
         // akses modeldosen
         $this->load->model('dosen_model','dosen');
-        $obj_dosen = $this->dosen->getByI($id);
+        $obj_dosen = $this->dosen->getById($id);
         $data['obj_dosen'] = $obj_dosen;
         $this->load->view('layouts/header');
         $this->load->view('dosen/edit', $data);
@@ -75,19 +75,19 @@ class Dosen extends CI_Controller{
     }
     public function upload(){
         $_iddosen = $this->input->post('iddosen');
-        // akes model mahasiswa
+        // akes model dosen
         $this->load->model('dosen_model','dosen');
-        $ds = $this->dosen_model->getByI($id);
-        $data['ds'] = $ds;
+        $dnn = $this->dosen->getById($_iddosen);
+        $data['dnn'] = $dnn;
 
         $config ['upload_path']='./uploads/photos';
         $config ['allowed_types']='jpg|png';
         $config ['max_size']=2894;
         $config ['max_width']=2894;
         $config ['max_height']=2894;
-        $config ['file_name']=$ds->id;
+        $config ['file_name']=$dnn->id;
 
-        // aktifkan libraru upload
+        // aktifkan library upload
         $this->load->library('upload',$config);
         // jika tidak ada file yang di upload 
         if (!$this->upload->do_upload('foto')) {
@@ -105,7 +105,6 @@ class Dosen extends CI_Controller{
         $this->load->view('layouts/footer');
         
     }
-
 }
 
 ?>

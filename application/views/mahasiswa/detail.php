@@ -41,7 +41,6 @@
                     <div class="mt-4">
                         <h4><?=$siswa->nama?></h4>
                         <p>Foto Mahasiswa</p> 
-                        <?php echo $error;?>
                         <br/>
                         <a href="https://www.instagram.com/n_padlah/" target="_blank">
                             <button class="btn btn-outline-info">Instagram</button>

@@ -23,13 +23,13 @@
         </thead>
         <tbody>
             <tr>
-                <td><?php echo $ds->id ?></td>
-                <td><?php echo $ds->nama ?></td>
-                <td><?php echo $ds->gender?></td>
-                <td><?php echo $ds->tmp_lahir?></td>
-                <td><?php echo $ds->tgl_lahir?></td>
-                <td><?php echo $ds->nidn ?></td>
-                <td><?php echo $ds->pendidikan ?></td>
+                <td><?php echo $dnn->id ?></td>
+                <td><?php echo $dnn->nama ?></td>
+                <td><?php echo $dnn->gender?></td>
+                <td><?php echo $dnn->tmp_lahir?></td>
+                <td><?php echo $dnn->tgl_lahir?></td>
+                <td><?php echo $dnn->nidn ?></td>
+                <td><?php echo $dnn->pendidikan ?></td>
             </tr>
         </tbody>
     </table>
@@ -37,18 +37,17 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex flex-column align-items-center text-center">
-                    <img src="<?=base_url()?>uploads/photos/<?=$ds->id?>.jpg" alt="ini foto" width="300" />
+                    <img src="<?=base_url()?>uploads/photos/<?=$dnn->id?>.jpg" alt="ini foto" width="300" />
                     <div class="mt-4">
-                        <h4><?=$ds->nama?></h4>
+                        <h4><?=$dnn->nama?></h4>
                         <p>Foto Dosen</p> 
-                        <?php echo $error;?>
                         <br/>
                         <a href="https://www.instagram.com/n_padlah/" target="_blank">
                             <button class="btn btn-outline-info">Instagram</button>
                         </a>
-                        <?php echo form_open_multipart('mahasiswa/upload');?>
+                        <?php echo form_open_multipart('dosen/upload');?>
                         <input type="file" name="foto" size="300"/>
-                        <input type="hidden" name="idmahasiswa" value="<?=$ds->id?>"/>
+                        <input type="hidden" name="iddosen" value="<?=$dnn->id?>"/>
                         <br/><br/>
                         <input type="submit" value="upload Foto" class="btn btn-primary" />
                         </form>

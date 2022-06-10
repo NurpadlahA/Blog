@@ -88,11 +88,11 @@ class Mahasiswa extends CI_Controller{
         $config ['max_height']=2894;
         $config ['file_name']=$siswa->id;
 
-        // aktifkan libraru upload
+        // aktifkan library upload
         $this->load->library('upload',$config);
         // jika tidak ada file yang di upload 
         if (!$this->upload->do_upload('foto')) {
-            // maka tampilan pesan eror
+              // maka tampilan pesan eror
             $data['error'] = $this->upload->display_errors();
         } else {
             // jika ada file yang di upload
